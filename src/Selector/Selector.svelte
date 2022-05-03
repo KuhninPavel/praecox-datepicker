@@ -42,7 +42,7 @@
   .divider {
     margin: 0 auto;
     height: 1px;
-    margin: 0 auto;
+    margin: 8px auto;
     overflow: hidden;
     background-color: #EBF0F5;
   }
