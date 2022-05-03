@@ -83,7 +83,11 @@
         class="month-title"
         in:fly|local={{ x: `${$praecoxCalendar.action == 'prev' ? -50 : 50}`, duration: 300 }}>
         {#if $praecoxCalendar.view === 'month'}
-          {noun[$praecoxCalendar.lang][$praecoxCalendar.monthName][new Date($praecoxCalendar.viewDate).getMonth()] + '  ' + new Date($praecoxCalendar.viewDate).getFullYear()}
+          {#if $praecoxCalendar.yearSelector}
+            {noun[$praecoxCalendar.lang][$praecoxCalendar.monthName][new Date($praecoxCalendar.viewDate).getMonth()] }
+          {:else}
+            {noun[$praecoxCalendar.lang][$praecoxCalendar.monthName][new Date($praecoxCalendar.viewDate).getMonth()] + '  ' + new Date($praecoxCalendar.viewDate).getFullYear()}
+          {/if}
         {:else if $praecoxCalendar.view === 'year'}
           {new Date($praecoxCalendar.viewDate).getFullYear()}
         {:else if $praecoxCalendar.view === 'multi-years'}
@@ -99,7 +103,11 @@
         class="month-title"
         in:fly|local={{ x: `${$praecoxCalendar.action == 'prev' ? -50 : 50}`, duration: 300 }}>
         {#if $praecoxCalendar.view === 'month'}
-          {noun[$praecoxCalendar.lang][$praecoxCalendar.monthName][new Date($praecoxCalendar.viewDate).getMonth()] + '  ' + new Date($praecoxCalendar.viewDate).getFullYear()}
+          {#if $praecoxCalendar.yearSelector}
+            {noun[$praecoxCalendar.lang][$praecoxCalendar.monthName][new Date($praecoxCalendar.viewDate).getMonth()] }
+          {:else}
+            {noun[$praecoxCalendar.lang][$praecoxCalendar.monthName][new Date($praecoxCalendar.viewDate).getMonth()] + '  ' + new Date($praecoxCalendar.viewDate).getFullYear()}
+          {/if}
         {:else if $praecoxCalendar.view === 'year'}
           {new Date($praecoxCalendar.viewDate).getFullYear()}
         {:else if $praecoxCalendar.view === 'multi-years'}

@@ -119,6 +119,18 @@
    */
   export let finishBtn = true;
 
+  /**
+   * Used to force picker date from outside
+   * @type { string }
+   */
+  export let extSelected = '';
+
+  /**
+   * Used to show/hide to year-spinner on the top
+   * @type { boolean }[finishBtn = false]
+   */
+  export let yearSelector = false;
+
   const praecoxCalendarData = writable({
     nowDate: [],
     viewDate: viewDate,
@@ -137,6 +149,8 @@
     pickerDone: pickerDone,
     finishBtn: finishBtn,
     changed: changed,
+    extSelected: extSelected,
+    yearSelector: yearSelector,
     reloadDisabled: () => {
       if (typeof reloadDisabled == "function") {
         $praecoxCalendarData.disabled = reloadDisabled(
@@ -153,8 +167,15 @@
 
   beforeUpdate(() => {
     $praecoxCalendarConfig.nowDate = nowDate;
-    selected = $praecoxCalendarConfig.selected;
     pickerDone = $praecoxCalendarConfig.pickerDone;
+    selected = $praecoxCalendarConfig.selected;
+
+    if(extSelected){
+      $praecoxCalendarConfig.selected = extSelected;
+      $praecoxCalendarConfig.viewDate = new Date(extSelected);
+      extSelected = '';
+    }
+    
   });
 
   $: if ($praecoxCalendarData.changed > changed) {
