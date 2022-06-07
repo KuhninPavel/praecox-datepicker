@@ -175,7 +175,7 @@ export function getFirstWeekOfTheMonth(n) {
   let i = 8 - dotw;
   let times = dotw - 2;
   for (let index = 0; index < firstWeekList.length; index++) {
-    firstWeekList[index] = new Date(py == ty ? ty : ty - 1, tm == 1 ? 11 : tm, pmd - times);
+    firstWeekList[index] = new Date(py == ty ? ty : ty - 1, tm == 1 ? 11 : tm-2, pmd - times);
     times--;
   }
   for (let j = 0; j < i; j++) {
